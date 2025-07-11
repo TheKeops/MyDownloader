@@ -119,12 +119,19 @@ def main():
     global url, name, root
 
     try:
+        # Uygulama dizinlerini ve dosyalarını oluşturma
         about_text = "Bu uygulama internetten URL girdiğiniz dosyayı indirir. Şu anda DEMO aşamasında olan\nuygulama geliştirilmeye devam edilecektir.\n\nYayıncı : TheKeops\nGeliştirici : TheKeops\nLisans : MIT LICENSE\nVersiyon : v1.0"
         helper_text = "Dosya URL yazan yere dosyanın url adresini giriniz, dosya adı yazan yere ise\nkayıt olacak dosya adını giriniz. Ardından 'İndir' butonuna basın.\n\nEğer hata alırsanız URL adresi yanlış girilmiş olabilir veya URL adresi\ngeçersiz olmuş olabilir."
 
         os.makedirs("MYDOWNLOADER", exist_ok=True)
         os.makedirs("MYDOWNLOADER/data", exist_ok=True)
         os.makedirs("MYDOWNLOADER/info", exist_ok=True)
+        os.makedirs("MYDOWNLOADER/assets", exist_ok=True)
+        os.makedirs("MYDOWNLOADER/assets/icons", exist_ok=True) 
+
+        # icons dosyasının içine `MyDownloaderLogo.png` dosyasını kopyalayın
+        icon_path = "MYDOWNLOADER/assets/icons/MyDownloaderLogo.png"
+
         open("MYDOWNLOADER/data/appdata.txt", "x", encoding="utf-8").write("false")
         open("MYDOWNLOADER/data/log.log", "x", encoding="utf-8")
 
