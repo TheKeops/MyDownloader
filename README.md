@@ -1,5 +1,5 @@
 <center>
-    <img src="MYDOWNLOADER/assets/icons/NyDownloaderBanner.png" alt="MyDownloaderBanner">
+    <img src="MYDOWNLOADER/assets/icons/MyDownloaderBanner.png" alt="MyDownloaderBanner">
 </center>
 
 <br>
