@@ -1,0 +1,5 @@
+Dosya URL yazan yere dosyanın url adresini giriniz, dosya adı yazan yere ise
+kayıt olacak dosya adını giriniz. Ardından 'İndir' butonuna basın.
+
+Eğer hata alırsanız URL adresi yanlış girilmiş olabilir veya URL adresi
+geçersiz olmuş olabilir.
