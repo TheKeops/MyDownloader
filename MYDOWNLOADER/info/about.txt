@@ -1,0 +1,7 @@
+Bu uygulama internetten URL girdiğiniz dosyayı indirir. Şu anda DEMO aşamasında olan
+uygulama geliştirilmeye devam edilecektir.
+
+Yayıncı : TheKeops
+Geliştirici : TheKeops
+Lisans : MIT LICENSE
+Versiyon : v1.0
