@@ -26,6 +26,26 @@ def write_log(message, type="null"):
     else:
         pass
 
+def resim_indir(url, klasor="MYDOWNLOADER/assets/icons", dosya_adi=None):
+    os.makedirs(klasor, exist_ok=True)
+    
+    if not dosya_adi:
+        dosya_adi = url.split("/")[-1]
+    
+    hedef_yol = os.path.join(klasor, dosya_adi)
+
+    try:
+        r = requests.get(url)
+        r.raise_for_status()
+
+        with open(hedef_yol, "wb") as f:
+            f.write(r.content)
+        print(f"[✔] İndirildi: {hedef_yol}")
+        return hedef_yol
+    except Exception as e:
+        print(f"[X] Hata: {e}")
+        return None
+
 def open_download_progress(event=None):
     if url.get().strip() == "" or name.get().strip() == "":
         messagebox.showwarning("MyDownloader v1.0", "Lütfen URL ve dosya adını doldurun.")
@@ -114,7 +134,6 @@ def helper():
 def open_log():
     log_file = "MYDOWNLOADER/data/log.log"
     os.startfile(os.path.abspath(log_file))
-
 def main():
     global url, name, root
 
@@ -129,14 +148,15 @@ def main():
         os.makedirs("MYDOWNLOADER/assets", exist_ok=True)
         os.makedirs("MYDOWNLOADER/assets/icons", exist_ok=True) 
 
-        # icons dosyasının içine `MyDownloaderLogo.png` dosyasını kopyalayın
-        icon_path = "MYDOWNLOADER/assets/icons/MyDownloaderLogo.png"
-
         open("MYDOWNLOADER/data/appdata.txt", "x", encoding="utf-8").write("false")
         open("MYDOWNLOADER/data/log.log", "x", encoding="utf-8")
 
         open("MYDOWNLOADER/info/about.txt", "x", encoding="utf-8").write(about_text)
         open("MYDOWNLOADER/info/helper.txt", "x", encoding="utf-8").write(helper_text)
+
+        # İkon ve logo dosyalarını indirme Github Sayfasından 
+        resim_indir("https://raw.githubusercontent.com/TheKeops/MyDownloader/main/MYDOWNLOADER/assets/icons/MyDownloaderLogo.png", "MYDOWNLOADER/assets/icons", "MyDownloaderLogo.png")
+        resim_indir("https://raw.githubusercontent.com/TheKeops/MyDownloader/main/MYDOWNLOADER/assets/icons/MyDownloaderLogo.ico", "MYDOWNLOADER/assets/icons", "MyDownloaderLogo.ico")
     except FileExistsError:
         pass
 
@@ -158,6 +178,8 @@ def main():
     root.geometry(f"{root_x}x{root_y}+{window_x}+{whindow_y}")
 
     os_platform = platform.system()
+
+    log_data_list = []
 
     title = tk.Label(root, text="MyDownloader v1.0", font=("Century Gothic", 16,"bold"))
     title.pack(pady=10)
@@ -195,7 +217,19 @@ def main():
     root.bind("<Escape>", lambda e: root.quit())
     root.bind("<F1>", lambda e: messagebox.showinfo("MyDownloader v1.0", f"URL : {url.get()}\nDosya Adı : {name.get()}"))
 
-    if os_platform == "Windows":    
+    if os_platform == "Windows":
+        with open("MYDOWNLOADER/info/about.txt", "w") as about_file:
+            if about_file == about_text:
+                pass
+            else:
+                about_file.write("Bu uygulama internetten URL girdiğiniz dosyayı indirir. Şu anda DEMO aşamasında olan\nuygulama geliştirilmeye devam edilecektir.\n\nYayıncı : TheKeops\nGeliştirici : TheKeops\nLisans : MIT LICENSE\nVersiyon : v1.0")
+
+        with open("MYDOWNLOADER/info/helper.txt", "w") as helper_file:
+            if helper_file == helper_text:
+                pass
+            else:
+                helper_file.write("Dosya URL yazan yere dosyanın url adresini giriniz, dosya adı yazan yere ise\nkayıt olacak dosya adını giriniz. Ardından 'İndir' butonuna basın.\n\nEğer hata alırsanız URL adresi yanlış girilmiş olabilir veya URL adresi\ngeçersiz olmuş olabilir.")
+
         with open("MYDOWNLOADER/data/appdata.txt", "r") as data_file:
             data = data_file.read().strip().lower()
 
