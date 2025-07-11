@@ -7,6 +7,9 @@
 >[!IMPORTANT]
 > Bu yazılım bir virüs değildir!
 
+>[!IMPORTANT]
+>Uygulamayı indirdiğinizde `MYDOWNLOADER/assets/icons/MyDownloaderLogo.png` dosyasını uygulamanın bilgisayarınızda kurulan aynı dosya dizinine atın. 
+
 >[!WARNING]
 >Uygulamanın dosyalarını düzenleme yapmayın `app_data.txt` gibi dosyalar uygulamanın kontrol amaçlı dosyalarıdır müdahale halinde uygulama kendi dosyasını düzeltir fakat yenideb modül kurulumu işlemi başlar.
 
