@@ -52,9 +52,6 @@ def open_download_progress(event=None):
         write_log("URL veya dosya adı boş bırakıldı.", type="warning")
         return
     
-    url.delete(0, tk.END)
-    name.delete(0, tk.END)
-    
     global progress_window, progress_bar, label_percent
 
     progress_window = tk.Toplevel()
@@ -266,3 +263,4 @@ def main():
 if __name__ == "__main__":
     main()
     write_log("MyDownloader v1.0 uygulaması kapatıldı.", type="info")
+
